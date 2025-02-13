@@ -1,7 +1,14 @@
 import fs from "fs";
+import path from "path";
 import chalk from "chalk";
 
-const logFilePath = "logs/app.log";
+const logDir = "logs";
+const logFilePath = path.join(logDir, "app.log");
+
+// Ensure logs directory exists
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
 
 // Function to log info messages
 const logInfo = (message) => {
