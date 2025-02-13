@@ -1,5 +1,5 @@
 import axios from "axios"; // Import axios for making HTTP requests
-import { PAYSTACK_SECRET_KEY } from "../../../config.js"; // Import Paystack secret key from config
+import { PAYSTACK_SECRET_KEY } from "../../config.js"; // Import Paystack secret key from config
 import chalk from "chalk"; // Import chalk for colored console logs
 
 // Function to create a payment request
@@ -21,7 +21,10 @@ const createPayment = async (amount, email) => {
 
     return response.data;
   } catch (error) {
-    console.error(chalk.red("❌ Error creating payment with Paystack:"), error.message);
+    console.error(
+      chalk.red("❌ Error creating payment with Paystack:"),
+      error.message
+    );
     throw error;
   }
 };
@@ -40,7 +43,10 @@ const verifyPayment = async (reference) => {
 
     return response.data;
   } catch (error) {
-    console.error(chalk.red("❌ Error verifying payment with Paystack:"), error.message);
+    console.error(
+      chalk.red("❌ Error verifying payment with Paystack:"),
+      error.message
+    );
     throw error;
   }
 };

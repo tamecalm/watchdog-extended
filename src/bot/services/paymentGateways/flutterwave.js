@@ -1,5 +1,8 @@
 import axios from "axios"; // Import axios for HTTP requests
-import { FLUTTERWAVE_SECRET_KEY, FLUTTERWAVE_PUBLIC_KEY } from "../../../config.js"; // Import Flutterwave keys
+import {
+  FLUTTERWAVE_SECRET_KEY,
+  FLUTTERWAVE_PUBLIC_KEY,
+} from "../../config.js"; // Import Flutterwave keys
 import chalk from "chalk"; // Import chalk for colored console logs
 
 // Function to initiate a payment with Flutterwave
@@ -23,7 +26,9 @@ const initiatePayment = async (amount, email, tx_ref) => {
     const response = await axios.post(url, data, { headers });
     return response.data;
   } catch (error) {
-    console.error(chalk.red("❌ Flutterwave payment initiation failed:", error.message));
+    console.error(
+      chalk.red("❌ Flutterwave payment initiation failed:", error.message)
+    );
     throw error;
   }
 };
@@ -40,7 +45,9 @@ const verifyPayment = async (tx_ref) => {
     const response = await axios.get(url, { headers });
     return response.data;
   } catch (error) {
-    console.error(chalk.red("❌ Flutterwave payment verification failed:", error.message));
+    console.error(
+      chalk.red("❌ Flutterwave payment verification failed:", error.message)
+    );
     throw error;
   }
 };

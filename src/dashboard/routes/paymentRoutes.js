@@ -4,7 +4,7 @@ import {
   processPaystackPayment,
   processCryptoPayment,
 } from "../../bot/services/paymentGateways/index.js";
-import { verifyUser } from "../controllers/authController";
+import { verifyUser } from "../../dashboard/controllers/authController.js";
 
 const router = express.Router();
 
