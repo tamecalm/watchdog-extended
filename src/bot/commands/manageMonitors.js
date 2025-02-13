@@ -1,5 +1,9 @@
-import { getUserMonitors, addUserMonitor, removeUserMonitor } from '../services/userManagement.js'; // Import user management functions
-import { sendMessage } from '../utils/telegramUtils.js'; // Import utility for sending messages
+import {
+  getUserMonitors,
+  addUserMonitor,
+  removeUserMonitor,
+} from "../services/userManagement.js"; // Import user management functions
+import { sendMessage } from "../../utils/telegramUtils.js"; // Import utility for sending messages
 
 // Function to handle adding a monitor
 const handleAddMonitor = async (userId, monitorUrl) => {
@@ -25,7 +29,7 @@ const handleRemoveMonitor = async (userId, monitorUrl) => {
 const handleListMonitors = async (userId) => {
   const monitors = await getUserMonitors(userId);
   if (monitors.length > 0) {
-    const monitorList = monitors.map((monitor) => `- ${monitor}`).join('\n');
+    const monitorList = monitors.map((monitor) => `- ${monitor}`).join("\n");
     sendMessage(userId, `📋 Your Monitors:\n${monitorList}`);
   } else {
     sendMessage(userId, `🔍 You have no monitors set up.`);
