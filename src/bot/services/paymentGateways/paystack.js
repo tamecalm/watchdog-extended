@@ -1,5 +1,5 @@
 import axios from "axios"; // Import axios for making HTTP requests
-import { PAYSTACK_SECRET_KEY } from "../../config.js"; // Import Paystack secret key from config
+import { PAYSTACK_SECRET_KEY } from "../../../dashboard/config.js"; // Import Paystack secret key from config
 import chalk from "chalk"; // Import chalk for colored console logs
 
 // Function to create a payment request

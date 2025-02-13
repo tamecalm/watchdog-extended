@@ -1,3 +1,3 @@
-export { processFlutterwavePayment } from "./flutterwave.js";
-export { processPaystackPayment } from "./paystack.js";
 export { processCryptoPayment } from "./cryptocurrency.js";
+export { initiatePayment, verifyPayment } from "./flutterwave.js";
+export { createPayment } from "./paystack.js";

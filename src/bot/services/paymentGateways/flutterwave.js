@@ -2,7 +2,7 @@ import axios from "axios"; // Import axios for HTTP requests
 import {
   FLUTTERWAVE_SECRET_KEY,
   FLUTTERWAVE_PUBLIC_KEY,
-} from "../../config.js"; // Import Flutterwave keys
+} from "../../../dashboard/config.js"; // Import Flutterwave keys
 import chalk from "chalk"; // Import chalk for colored console logs
 
 // Function to initiate a payment with Flutterwave

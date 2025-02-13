@@ -1,5 +1,9 @@
 import TelegramBot from "node-telegram-bot-api"; // Import the TelegramBot class
-import { WATCHDOG_BOT_TOKEN, CHAT_ID, USER_ID } from "../../bot/config.js"; // Import the Telegram bot token and chat ID
+import {
+  WATCHDOG_BOT_TOKEN,
+  CHAT_ID,
+  USER_ID,
+} from "../../dashboard/config.js"; // Import the Telegram bot token and chat ID
 import chalk from "chalk"; // Import chalk for colored console logs
 
 // Create a new Telegram bot instance

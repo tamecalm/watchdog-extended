@@ -1,6 +1,6 @@
 import axios from "axios"; // Import axios for making HTTP requests
 import chalk from "chalk"; // Import chalk for colored console logs
-import { USER_ID, CHAT_ID } from "../../config.js"; // Import user and chat IDs for notifications
+import { USER_ID, CHAT_ID } from "../../../dashboard/config.js"; // Import user and chat IDs for notifications
 import notifyAdmins from "../notifyAdmins.js"; // Import the notifyAdmins function
 
 // Function to process cryptocurrency payments
