@@ -9,7 +9,7 @@ const createPayment = async (amount, email) => {
       "https://api.paystack.co/transaction/initialize",
       {
         email,
-        amount,
+        amount: amount * 100, // Convert amount to kobo (Paystack requirement)
       },
       {
         headers: {
@@ -51,5 +51,37 @@ const verifyPayment = async (reference) => {
   }
 };
 
+// Wrapper function to process a payment with Paystack
+const processPaystackPayment = async (amount, email) => {
+  try {
+    console.log(chalk.blue("🔄 Initiating Paystack payment..."));
+    const paymentResponse = await createPayment(amount, email);
+
+    if (!paymentResponse.data || !paymentResponse.data.reference) {
+      throw new Error("No payment reference received.");
+    }
+
+    console.log(chalk.green("✅ Payment initiated. Verifying..."));
+
+    // Verify the payment using the reference from the response
+    const verificationResponse = await verifyPayment(
+      paymentResponse.data.reference
+    );
+
+    if (verificationResponse.data.status === "success") {
+      console.log(chalk.green("✅ Payment verified successfully!"));
+      return verificationResponse.data;
+    } else {
+      throw new Error("Payment verification failed.");
+    }
+  } catch (error) {
+    console.error(
+      chalk.red("❌ Error processing payment with Paystack:"),
+      error.message
+    );
+    throw error;
+  }
+};
+
 // Export the payment functions
-export { createPayment, verifyPayment };
+export { createPayment, verifyPayment, processPaystackPayment };
