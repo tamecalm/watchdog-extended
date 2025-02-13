@@ -32,11 +32,4 @@ const logDebug = (message) => {
 };
 
 // Exporting the logging functions
-const logger = {
-  logInfo,
-  logWarning,
-  logError,
-  logDebug,
-};
-
-export default logger;
+export { logInfo, logWarning, logError, logDebug };

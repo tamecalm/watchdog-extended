@@ -8,7 +8,7 @@ import authRoutes from "./routes/authRoutes.js";
 import monitorRoutes from "./routes/monitorRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import { logError, logInfo } from "../utils/logger.js";
+import { logInfo, logWarning, logError, logDebug } from "../utils/logger.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
