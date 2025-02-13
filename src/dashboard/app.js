@@ -2,13 +2,22 @@ import express from "express";
 import mongoose from "mongoose";
 import session from "express-session";
 import passport from "passport";
+import dotenv from "dotenv";
 import { initPassport } from "./config.js";
 import authRoutes from "./routes/authRoutes.js";
 import monitorRoutes from "./routes/monitorRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
-import logger from "../utils/logger.js";
+import { logError, logInfo } from "../utils/logger.js";
 import path from "path";
+import { fileURLToPath } from "url";
+
+// Fix __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
 
@@ -16,7 +25,11 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
-  session({ secret: "your_secret_key", resave: false, saveUninitialized: true })
+  session({
+    secret: process.env.SESSION_SECRET || "your_secret_key",
+    resave: false,
+    saveUninitialized: true,
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -31,8 +44,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => logger.info("MongoDB connected"))
-  .catch((err) => logger.error("MongoDB connection error:", err));
+  .then(() => logInfo("MongoDB connected"))
+  .catch((err) => logError("MongoDB connection error:", err));
 
 // Initialize Passport
 initPassport(passport);
@@ -46,5 +59,5 @@ app.use("/user", userRoutes);
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  logger.info(`Dashboard server is running on port ${PORT}`);
+  logInfo(`Dashboard server is running on port ${PORT}`);
 });
