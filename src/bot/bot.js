@@ -4,8 +4,8 @@ import {
   manageMonitors,
   manageSubscriptions,
   manageSettings,
-  getStats,
-} from "./commands/manageMonitors.js";
+} from "./commands/manageMonitors.js"; // Import the manageMonitors function
+import { getStats } from "../bot/services/monitorManagement.js"; // Import the getStats function
 import { WATCHDOG_BOT_TOKEN } from "../dashboard/config.js";
 
 const bot = new TelegramBot(WATCHDOG_BOT_TOKEN, { polling: true });
