@@ -1,5 +1,5 @@
 import chalk from "chalk";
-import { bot } from "../bot/services/userManagement.js"; // Import the bot instance
+import { bot } from "../bot/bot.js"; // Update to the correct path
 
 /**
  * Send a message to a specific chat.

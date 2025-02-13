@@ -2,8 +2,8 @@ import {
   getUserMonitors,
   addUserMonitor,
   removeUserMonitor,
-} from "../services/userManagement.js"; // Import user management functions
-import { sendMessage } from "../../utils/telegramUtils.js"; // Import utility for sending messages
+} from "../services/monitorManagement.js"; // Import the monitor management functions
+import { sendMessage } from "../../utils/telegramUtils.js"; // Import the sendMessage function
 
 // Function to handle adding a monitor
 const handleAddMonitor = async (userId, monitorUrl) => {

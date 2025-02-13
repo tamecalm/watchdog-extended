@@ -2,6 +2,13 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Define the alert levels
+export const ALERT_LEVELS = {
+  WARNING_1: 1, // First warning after 1 failure
+  WARNING_2: 2, // Second warning after 2 failures
+  CRITICAL: 3, // Critical alert after 3 failures
+};
+
 export const MONGODB_URI =
   process.env.MONGODB_URI || "mongodb://localhost:27017/watchdog";
 export const SESSION_SECRET = process.env.SESSION_SECRET || "your_secret_key";
@@ -41,6 +48,20 @@ export const plans = {
     price: 10, // Monthly subscription price
   },
 };
+
+// Array of services to monitor
+export const BOTS = [
+  {
+    name: "IDSync",
+    healthUrl: "https://Emerald-Hawk-zfzcbebzw.stackhost.me/health",
+  },
+  { name: "Bingpay", healthUrl: "https://Bingpay.ng" },
+  { name: "InfinityFree", healthUrl: "https://www.infinityfree.com" },
+  { name: "Google", healthUrl: "https://www.google.com" },
+  { name: "Azure", healthUrl: "https://azure.microsoft.com" },
+  { name: "DynamoDB", healthUrl: "https://aws.amazon.com/dynamodb" },
+  // More bots can be added here
+];
 
 // Define and export initPassport function
 export function initPassport() {

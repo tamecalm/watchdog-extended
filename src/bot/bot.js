@@ -53,3 +53,4 @@ bot.onText(/\/status/, async (msg) => {
 });
 
 export default bot;
+export { bot };
