@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Monitors</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Your Monitors</h1>
+        <form id="addMonitorForm" action="/monitors/add" method="POST">
+            <input type="text" name="monitorName" placeholder="Monitor Name" required>
+            <input type="url" name="monitorUrl" placeholder="Monitor URL" required>
+            <button type="submit">Add Monitor</button>
+        </form>
+
+        <h2>Your Monitors</h2>
+        <ul id="monitorList">
+            <% monitors.forEach(monitor => { %>
+                <li>
+                    <strong><%= monitor.name %></strong> - <%= monitor.url %>
+                    <form action="/monitors/remove" method="POST" style="display:inline;">
+                        <input type="hidden" name="monitorId" value="<%= monitor._id %>">
+                        <button type="submit">Remove</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Payments and Subscriptions</h1>
+        
+        <div class="subscription-info">
+            <h2>Your Subscription Plan</h2>
+            <p>Current Plan: <strong><%= user.subscriptionPlan %></strong></p>
+            <p>Status: <strong><%= user.subscriptionStatus %></strong></p>
+        </div>
+
+        <div class="payment-options">
+            <h2>Upgrade Your Plan</h2>
+            <form action="/payments/upgrade" method="POST">
+                <label for="plan">Select Plan:</label>
+                <select name="plan" id="plan" required>
+                    <option value="free">Free Plan</option>
+                    <option value="basic">Basic Plan</option>
+                    <option value="premium">Premium Plan</option>
+                </select>
+                <button type="submit">Upgrade</button>
+            </form>
+        </div>
+
+        <div class="payment-history">
+            <h2>Payment History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% payments.forEach(payment => { %>
+                        <tr>
+                            <td><%= payment.date %></td>
+                            <td><%= payment.amount %></td>
+                            <td><%= payment.status %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="payment-gateway">
+            <h2>Make a Payment</h2>
+            <form action="/payments/process" method="POST">
+                <label for="amount">Amount:</label>
+                <input type="number" name="amount" id="amount" required>
+                
+                <label for="gateway">Payment Gateway:</label>
+                <select name="gateway" id="gateway" required>
+                    <option value="flutterwave">Flutterwave</option>
+                    <option value="paystack">Paystack</option>
+                    <option value="cryptocurrency">Cryptocurrency</option>
+                </select>
+                
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
