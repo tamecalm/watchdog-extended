@@ -8,6 +8,8 @@ export const SESSION_SECRET = process.env.SESSION_SECRET || "your_secret_key";
 export const PORT = process.env.PORT || 3000;
 export const FLUTTERWAVE_KEY =
   process.env.FLUTTERWAVE_KEY || "your_flutterwave_key";
+export const FLUTTERWAVE_PUBLIC_KEY =
+  process.env.FLUTTERWAVE_PUBLIC_KEY || "your_flutterwave_public_key";
 export const PAYSTACK_KEY = process.env.PAYSTACK_KEY || "your_paystack_key";
 export const CRYPTOCURRENCY_API_KEY =
   process.env.CRYPTOCURRENCY_API_KEY || "your_crypto_api_key";
@@ -18,5 +20,6 @@ export const WATCHDOG_BOT_TOKEN =
 
 export const PAYMENT_GATEWAY_KEYS = {
   flutterwave: FLUTTERWAVE_KEY,
+  flutterwavePublic: FLUTTERWAVE_PUBLIC_KEY,
   paystack: PAYSTACK_KEY,
 };

@@ -13,6 +13,7 @@ export const CONFIG = {
   mongoUri: MONGODB_URI,
   paymentGateways: {
     flutterwave: PAYMENT_GATEWAY_KEYS.FLUTTERWAVE,
+    flutterwavePublic: FLUTTERWAVE_PUBLIC_KEY,
     paystack: PAYMENT_GATEWAY_KEYS.PAYSTACK,
     cryptocurrency: PAYMENT_GATEWAY_KEYS.CRYPTOCURRENCY,
   },
