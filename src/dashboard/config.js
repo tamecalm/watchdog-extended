@@ -41,3 +41,8 @@ export const plans = {
     price: 10, // Monthly subscription price
   },
 };
+
+// Define and export initPassport function
+export function initPassport() {
+  // Your Passport.js initialization code here
+}

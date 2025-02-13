@@ -1,7 +1,7 @@
-import fs from 'fs';
-import chalk from 'chalk';
+import fs from "fs";
+import chalk from "chalk";
 
-const logFilePath = 'logs/app.log';
+const logFilePath = "logs/app.log";
 
 // Function to log info messages
 const logInfo = (message) => {
@@ -32,4 +32,11 @@ const logDebug = (message) => {
 };
 
 // Exporting the logging functions
-export { logInfo, logWarning, logError, logDebug };
+const logger = {
+  logInfo,
+  logWarning,
+  logError,
+  logDebug,
+};
+
+export default logger;
